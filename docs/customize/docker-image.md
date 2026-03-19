@@ -81,7 +81,7 @@ RUN npm install -g @acme/monitoring-cli    # <-- ADD THIS
 
 ## Modify: Bake In the Custom Plugin
 
-The existing Dockerfile already COPYs the compiled plugin and runs `openclaw plugins install`. Your custom `registerProvider`, `registerCli`, and `registerService` additions from the [plugin page](plugin.md) are automatically included because they are part of the compiled `dist/` output.
+The existing Dockerfile already COPYs the compiled plugin and runs `openclaw plugins install`. Your custom `registerProvider`, `registerCli`, and `registerService` additions from the [plugin page](openclaw-plugins.md) are automatically included because they are part of the compiled `dist/` output.
 
 The relevant Dockerfile lines for orientation:
 

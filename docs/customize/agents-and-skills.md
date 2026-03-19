@@ -85,7 +85,7 @@ Create `agents/acme-agent/agent/auth-profiles.json` with credential references f
 }
 ```
 
-This references the `acme-claude` provider registered in the [plugin page](plugin-api.md). The `keyRef` uses the `credential_env` pattern, referencing the `ANTHROPIC_API_KEY` environment variable by name. Never put a literal API key value in this file.
+This references the `acme-claude` provider registered in the [plugin page](openclaw-plugins.md). The `keyRef` uses the `credential_env` pattern, referencing the `ANTHROPIC_API_KEY` environment variable by name. Never put a literal API key value in this file.
 
 Add a `COPY` instruction to the Dockerfile to bake the custom agent into the image. Place this after the existing `mkdir -p /sandbox/.openclaw/agents/main/agent` line:
 

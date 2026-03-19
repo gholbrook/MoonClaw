@@ -229,6 +229,25 @@ Monitor Sandbox Activity <monitoring/monitor-sandbox-activity>
 ```
 
 ```{toctree}
+:caption: Customize
+:hidden:
+
+Overview <customize/overview>
+Prerequisites <customize/prerequisites>
+Onboard Wizard <customize/onboard-wizard>
+Environment Variables <customize/env-vars>
+Blueprint <customize/blueprint>
+Network Policy <customize/network-policy>
+OpenClaw Plugins <customize/openclaw-plugins>
+Agents and Skills <customize/agents-and-skills>
+Docker Image <customize/docker-image>
+Web UI <customize/web-ui>
+Auxiliary Services <customize/auxiliary-services>
+Install Script <customize/install-script>
+Verification <customize/verification>
+```
+
+```{toctree}
 :caption: Reference
 :hidden:
 

@@ -129,6 +129,7 @@ function Show-Summary {
     }
     if ($Results.SharedDrive) {
         Write-Host "    Shared drive .......... $($Results.SharedDrive.localPath)" -ForegroundColor Green
+        Write-Host "    Sandbox path .......... /shared" -ForegroundColor Green
         if ($Results.SharedDrive.smbEnabled) {
             Write-Host "    Network path .......... $($Results.SharedDrive.networkPath)" -ForegroundColor Green
         }
@@ -301,6 +302,25 @@ function Invoke-MoonClawInstall {
         $results.Onboard = $true
         Write-Host ""
         Write-Host "    Onboard completed successfully." -ForegroundColor Green
+
+        # Sync shared folder into sandbox so OpenClaw can access user files
+        Write-Host "    Syncing shared folder to sandbox..." -ForegroundColor DarkGray
+        $onboardSandboxName = $nimConfig.sandboxName
+        $sharePath = Join-Path ([System.Environment]::GetFolderPath('Desktop')) 'MoonClaw Shared'
+        if (Test-Path $sharePath) {
+            $resolvedShare = (Resolve-Path $sharePath).Path
+            $wslSharePath = "/mnt/$($resolvedShare.Substring(0,1).ToLower())/$($resolvedShare.Substring(3).Replace('\','/'))"
+            $prevEAP2 = $ErrorActionPreference
+            $ErrorActionPreference = 'Continue'
+            & wsl -d Ubuntu -- /home/moon/.local/bin/openshell sandbox upload $onboardSandboxName $wslSharePath /sandbox/shared 2>&1 | Write-PipedLine
+            $ErrorActionPreference = $prevEAP2
+            if ($LASTEXITCODE -eq 0) {
+                Write-Host "    Shared folder synced to /sandbox/shared in sandbox." -ForegroundColor Green
+            }
+            else {
+                Write-Host "    Shared folder sync failed. Run '.\moonclaw-share.ps1 push' later." -ForegroundColor Yellow
+            }
+        }
 
         # Install openshell CLI inside the container so 'openshell sandbox connect' works
         Write-Host "    Installing openshell CLI in container..." -ForegroundColor DarkGray

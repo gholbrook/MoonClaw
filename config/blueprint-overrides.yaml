@@ -1,0 +1,26 @@
+# MoonClaw — Blueprint overrides
+# These settings are merged on top of the default NemoClaw blueprint.
+
+overrides:
+  inference:
+    profiles:
+      openrouter:
+        provider_type: "openai"
+        provider_name: "openrouter"
+        endpoint: "https://openrouter.ai/api/v1"
+        model: "anthropic/claude-sonnet-4"
+        credential_env: "OPENROUTER_API_KEY"
+
+  policy:
+    additions:
+      openrouter_api:
+        name: openrouter_api
+        endpoints:
+          - host: "openrouter.ai"
+            port: 443
+            protocol: rest
+
+  dashboard:
+    enabled: true
+    port: 3200
+    host: "localhost"

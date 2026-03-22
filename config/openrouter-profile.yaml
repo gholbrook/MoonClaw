@@ -1,0 +1,44 @@
+# MoonClaw — OpenRouter inference profile
+# OpenRouter provides access to multiple LLM providers via a unified API.
+
+openrouter:
+  provider_type: "openai"
+  provider_name: "openrouter"
+  endpoint: "https://openrouter.ai/api/v1"
+  model: "anthropic/claude-sonnet-4"
+  credential_env: "OPENROUTER_API_KEY"
+
+  models:
+    - id: "anthropic/claude-sonnet-4"
+      label: "Claude Sonnet 4"
+      context: 200000
+    - id: "anthropic/claude-haiku-4"
+      label: "Claude Haiku 4"
+      context: 200000
+    - id: "openai/gpt-4.1"
+      label: "GPT-4.1"
+      context: 1047576
+    - id: "openai/gpt-4.1-mini"
+      label: "GPT-4.1 Mini"
+      context: 1047576
+    - id: "google/gemini-2.5-pro"
+      label: "Gemini 2.5 Pro"
+      context: 1048576
+    - id: "google/gemini-2.5-flash"
+      label: "Gemini 2.5 Flash"
+      context: 1048576
+    - id: "meta-llama/llama-4-maverick"
+      label: "Llama 4 Maverick"
+      context: 1048576
+    - id: "meta-llama/llama-4-scout"
+      label: "Llama 4 Scout"
+      context: 524288
+    - id: "deepseek/deepseek-r1"
+      label: "DeepSeek R1"
+      context: 164000
+    - id: "mistralai/mistral-large"
+      label: "Mistral Large"
+      context: 128000
+    - id: "qwen/qwen3-235b-a22b"
+      label: "Qwen3 235B"
+      context: 131072

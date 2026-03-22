@@ -1,0 +1,16 @@
+{
+  "name": "moonclaw-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MoonClaw monitoring and configuration dashboard",
+  "scripts": {
+    "dev": "next dev -p 3200",
+    "build": "next build",
+    "start": "next start -p 3200"
+  },
+  "dependencies": {
+    "next": "^15.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
